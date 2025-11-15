@@ -105,8 +105,8 @@ const nameExists = persons.some(p => p.name.toLowerCase() === body.name.toLowerC
     }
 
 const person = {
-    content: body.name,
-    important: body.number || false,
+    name: body.name,
+    number: body.number || false,
     id: generateId(),
 }
 
