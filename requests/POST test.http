@@ -1,7 +1,0 @@
-POST https://phonebookbackend-tbcn.onrender.com/api/persons
-Content-Type: application/json
-
-{
-    "name": "Carry Jones",
-    "number": "333-555-856"
-}
