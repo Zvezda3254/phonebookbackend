@@ -45,40 +45,47 @@ const generateId = () => {
 }
 
 
-app.post('/api/persons', (request, response) => {
-const body = request.body
+app.post('/api/persons', (request, response, next) => { 
+    const body = request.body
 
-if (!body.name) {
-    return response.status(400).json({ 
-        error: 'name missing' 
-    })
-}
-if (!body.number) {
+    if (!body.name) {
+        return response.status(400).json({ 
+            error: 'name missing' 
+        })
+    }
+    if (!body.number) {
         return response.status(400).json({ 
             error: 'number missing' 
         })
     }
 
-const nameExists = persons.some(p => p.name.toLowerCase() === body.name.toLowerCase())
-    if (nameExists) {
-        return response.status(400).json({ 
-            error: 'name must be unique' 
+    
+    person.findOne({ name: body.name })
+        .then(existingPerson => {
+            if (existingPerson) {
+               
+                return response.status(400).json({ 
+                    error: 'name must be unique' 
+                })
+            }
+
+            
+            const newPerson = new person ({
+                name: body.name,
+                number: body.number || false,
+               
+            })
+            
+            
+            return newPerson.save()
         })
-    }
-
-const newPerson = new person ({
-    name: body.name,
-    number: body.number || false,
-    id: generateId(),
-})
-
-    newPerson.save().then (savedPerson=>{
-    response.json(savedPerson)
-})
-    .catch(error => next(error))
+        .then (savedPerson=>{
+            response.json(savedPerson)
+        })
+        .catch(error => next(error)) 
+    
 
 })
-
 const errorHandler = (error, request, response, next) => {
     console.error(error.message)
 
