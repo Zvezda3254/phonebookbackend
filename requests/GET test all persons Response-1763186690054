@@ -1,0 +1,18 @@
+HTTP/1.1 200 OK
+Date: Sat, 15 Nov 2025 06:04:30 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: close
+Content-Encoding: gzip
+access-control-allow-origin: *
+etag: W/"129-/+Dl5XMIK83y35FkPS259v/+dKI"
+rndr-id: 1c48e748-90bc-49a2
+vary: Accept-Encoding
+x-powered-by: Express
+x-render-origin-server: Render
+cf-cache-status: DYNAMIC
+Server: cloudflare
+CF-RAY: 99ec8d33fdf3d0cf-SOF
+alt-svc: h3=":443"; ma=86400
+
+[{"name":"Arto Hellas","number":"040-123456","id":"1"},{"name":"Ada Lovelace","number":"39-44-5323523","id":"2"},{"id":"3","name":"Dan Abramov","number":"12-43-234345"},{"name":"Mary Poppendieck","number":"39-23-6423122","id":"4"},{"content":"Carry Jones","important":"333-555-856","id":"111707"}]
